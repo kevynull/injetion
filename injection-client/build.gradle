@@ -1,0 +1,29 @@
+plugins {
+	id 'org.springframework.boot'
+	id 'io.spring.dependency-management'
+	id 'java'
+}
+
+group = 'cc.local.injection'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenLocal()
+	maven {
+		url 'https://maven.aliyun.com/repository/public/'
+	}
+	maven {
+		url 'https://maven.aliyun.com/repository/spring/'
+	}
+	mavenCentral()
+}
+
+dependencies {
+	implementation project(":injection-core")
+	implementation project(":injection-protocol")
+}
+
+test {
+	useJUnitPlatform()
+}

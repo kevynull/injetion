@@ -1,0 +1,59 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group 'cc.local.injection'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    maven {
+        url 'https://maven.aliyun.com/repository/public/'
+    }
+    maven {
+        url 'https://maven.aliyun.com/repository/spring/'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+subprojects{
+    apply plugin:'java'
+    apply plugin:'idea'
+    apply plugin:'org.springframework.boot'
+    apply plugin:'io.spring.dependency-management'
+
+    group ='cc.local.injection'
+
+    sourceCompatibility =1.8
+    targetCompatibility =1.8
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava,compileTestJava,javadoc]*.options*.encoding ='UTF-8'
+
+    bootJar {
+        enabled =false  // 默认不需要打可执行jar包
+    }
+
+    repositories {
+        mavenLocal()
+        maven {
+            url 'https://maven.aliyun.com/repository/public/'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/spring/'
+        }
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+    }
+
+}

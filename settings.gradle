@@ -1,0 +1,2 @@
+rootProject.name = 'injection'
+include('injection-server', 'injection-client', 'injection-core', 'injection-protocol')
