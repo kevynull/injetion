@@ -22,6 +22,9 @@ repositories {
 dependencies {
 	implementation project(":injection-core")
 	implementation project(":injection-protocol")
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 test {
